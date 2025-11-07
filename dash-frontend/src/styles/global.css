@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;500&display=swap");
+
+/* -------------------------------------- */
+/* LIGHT MODE (default) */
+/* -------------------------------------- */
+
+body {
+  margin: 0;
+  font-family: "Orbitron", "Roboto", sans-serif;
+  background-color: #f5f5f5;
+  color: #333333;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Orbitron", sans-serif;
+  margin: 0 0 10px 0;
+}
+
+/* Reset button styles */
+button {
+  all: unset;
+  box-sizing: border-box;
+}
+
+.btn-f1 {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 4px;
+  background-color: #e10600; /* F1 red */
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+/* Drivers styles */
+.drivers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.drivers-table th {
+  padding-left: 4px;
+}
+
+/* -------------------------------------- */
+/* DARK MODE */
+/* Toggle dark mode by adding `dark` to body */
+/* -------------------------------------- */
+
+body.dark {
+  background-color: #121212;
+  color: #e0e0e0;
+}
