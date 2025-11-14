@@ -33,7 +33,7 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
 
       - name: Build Tauri app (macOS)
-        working-directory: src-tauri
+        working-directory: dash-backend/src-tauri
         run: |
           npm install -g pnpm
           pnpm install
@@ -43,7 +43,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: macOS-app
-          path: src-tauri/target/release/bundle
+          path: dash-backend/src-tauri/target/release/bundle
 
   build-windows:
     name: Build Windows .exe/.msi
@@ -68,7 +68,7 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
 
       - name: Build Tauri app (Windows)
-        working-directory: src-tauri
+        working-directory: dash-backend/src-tauri
         run: |
           npm install -g pnpm
           pnpm install
@@ -78,4 +78,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Windows-app
-          path: src-tauri/target/release/bundle
+          path: dash-backend/src-tauri/target/release/bundle
