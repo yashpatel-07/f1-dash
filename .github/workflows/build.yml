@@ -1,0 +1,82 @@
+name: Build Tauri Apps
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-macos:
+    name: Build macOS .app/.dmg
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - name: Install dependencies (frontend)
+        working-directory: dash-frontend
+        run: |
+          npm install
+          npm run build
+
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      - name: Build Tauri app (macOS)
+        working-directory: src-tauri
+        run: |
+          npm install -g pnpm
+          pnpm install
+          pnpm tauri build
+
+      - name: Upload macOS artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: macOS-app
+          path: src-tauri/target/release/bundle
+
+  build-windows:
+    name: Build Windows .exe/.msi
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies (frontend)
+        working-directory: dash-frontend
+        run: |
+          npm install
+          npm run build
+
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      - name: Build Tauri app (Windows)
+        working-directory: src-tauri
+        run: |
+          npm install -g pnpm
+          pnpm install
+          pnpm tauri build
+
+      - name: Upload Windows artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Windows-app
+          path: src-tauri/target/release/bundle
