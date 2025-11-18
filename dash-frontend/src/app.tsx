@@ -1,13 +1,25 @@
 import { MetaProvider, Title } from "@solidjs/meta";
 import { Router } from "@solidjs/router";
 import { FileRoutes } from "@solidjs/start/router";
-import { Suspense } from "solid-js";
+import { createSignal, on, onMount, Suspense } from "solid-js";
 import "./app.css";
 
 export default function App() {
+  let [theme, setTheme] = createSignal("dark");
   const toggleTheme = () => {
-    document.body.classList.toggle("dark");
+    const newTheme = theme() === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    document.body.classList.toggle("dark", newTheme === "dark");
   };
+
+  onMount(() => {
+    if (theme() === "dark") {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  });
+
   return (
     <Router
       root={(props) => (
@@ -21,7 +33,7 @@ export default function App() {
           >
             <h1>F1 Dashboard</h1>
             <button class="btn-f1" onClick={toggleTheme}>
-              Change Theme
+              {theme() === "light" ? "Dark" : "Light"}
             </button>
           </header>
           <Suspense>{props.children}</Suspense>

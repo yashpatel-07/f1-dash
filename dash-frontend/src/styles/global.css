@@ -1,12 +1,37 @@
-@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;500&display=swap");
-
 /* -------------------------------------- */
 /* LIGHT MODE (default) */
 /* -------------------------------------- */
 
+/* COLOR CONSTANTS */
+:root {
+  --f1-red: #e10600;
+  --light-bg: #f5f5f5;
+  --light-text: #333333;
+  --dark-bg: #121212;
+  --dark-text: #e0e0e0;
+}
+
+/* loader */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--f1-red);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
 body {
   margin: 0;
-  font-family: "Orbitron", "Roboto", sans-serif;
   background-color: #f5f5f5;
   color: #333333;
 }
@@ -17,8 +42,20 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Orbitron", sans-serif;
   margin: 0 0 10px 0;
+}
+
+.note {
+  font-size: 12px;
+  color: #666666;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
 }
 
 /* Reset button styles */
@@ -33,14 +70,14 @@ button {
   font-weight: 500;
   border: none;
   border-radius: 4px;
-  background-color: #e10600; /* F1 red */
+  background-color: var(--f1-red);
   color: #ffffff;
   cursor: pointer;
   transition: background-color 0.2s, transform 0.1s;
 }
 
 /* Drivers styles */
-.drivers {
+.drivers-page {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -50,6 +87,89 @@ button {
 
 .drivers-table th {
   padding-left: 4px;
+  background-color: var(--f1-red);
+  color: #ffffff;
+}
+
+.drivers-table th,
+.drivers-table td {
+  min-width: 120px;
+  text-align: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  background-color: #e10600;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.race-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 0 1rem;
+}
+
+.race-card {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.race-card h2 {
+  margin: 0 0 0.5rem 0;
+}
+
+.race-card p {
+  margin: 0.25rem 0;
+}
+
+.race-card.upcoming {
+  background-color: var(--light-bg);
+  color: #000;
+  border: 2px solid var(--f1-red);
+  font-weight: bold;
+  margin: 1rem 1rem;
+}
+
+.race-card.upcoming h2 {
+  background-color: var(--f1-red);
+  color: #ffffff;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.race-toggle-container {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.race-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.session-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.session-list-inner {
+  font-weight: 200;
 }
 
 /* -------------------------------------- */
@@ -60,4 +180,9 @@ button {
 body.dark {
   background-color: #121212;
   color: #e0e0e0;
+}
+
+body.dark .race-card {
+  background-color: #000000;
+  color: #f5f5f5;
 }

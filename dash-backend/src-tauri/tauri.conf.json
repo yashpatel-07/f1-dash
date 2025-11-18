@@ -7,7 +7,7 @@
     "beforeDevCommand": "cd ../dash-frontend && npm run dev",
     "devUrl": "http://localhost:3000",
     "beforeBuildCommand": "cd ../dash-frontend && npm run build",
-    "frontendDist": "../dash-frontend/dist"
+    "frontendDist": "../../dash-frontend/.output/public"
   },
   "app": {
     "windows": [
