@@ -28,5 +28,5 @@ npm run tauri dev
 
 ```bash
 cd dash-backend
-npm tauri build
+npm run tauri build
 ```
