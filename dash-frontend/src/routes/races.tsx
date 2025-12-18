@@ -73,7 +73,24 @@ export default function Races() {
           </div>
         }
       >
-        <Show when={nextRace()} fallback={<p>No upcoming races.</p>}>
+        <Show
+          when={nextRace()}
+          fallback={
+            <div>
+              <p style="text-align: center; padding: 2rem; font-size: 1.2rem;">
+                No upcoming races.
+              </p>
+              <div class="race-toggle-container">
+                <button
+                  class="btn-f1"
+                  onClick={() => setIsShowAllRaces(!isShowAllRaces())}
+                >
+                  {isShowAllRaces() === false ? "Show All Races" : "Show Less"}
+                </button>
+              </div>
+            </div>
+          }
+        >
           {(race) => {
             const r = race(); // call the accessor to get RaceStatus
 

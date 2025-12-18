@@ -9,6 +9,8 @@
   --light-text: #333333;
   --dark-bg: #121212;
   --dark-text: #e0e0e0;
+  --light-dark-bg: #1f1f1f;
+  --dark-dark-bg: #ececec;
 }
 
 /* loader */
@@ -77,7 +79,8 @@ button {
 }
 
 /* Drivers styles */
-.drivers-page {
+.drivers-page,
+.teams-page {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -85,16 +88,24 @@ button {
   padding: 20px;
 }
 
-.drivers-table th {
+.drivers-table th,
+.teams-table th {
   padding-left: 4px;
   background-color: var(--f1-red);
   color: #ffffff;
 }
 
 .drivers-table th,
-.drivers-table td {
+.drivers-table td,
+.teams-table th,
+.teams-table td {
   min-width: 120px;
   text-align: center;
+}
+
+.drivers-table td,
+.teams-table td {
+  background-color: var(--dark-dark-bg);
 }
 
 .nav-links {
@@ -185,4 +196,9 @@ body.dark {
 body.dark .race-card {
   background-color: #000000;
   color: #f5f5f5;
+}
+
+body.dark .drivers-table td,
+body.dark .teams-table td {
+  background-color: var(--light-dark-bg);
 }

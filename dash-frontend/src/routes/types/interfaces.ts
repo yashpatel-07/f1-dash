@@ -25,3 +25,10 @@ interface Session {
   date: string;
   time: string;
 }
+
+export interface ConstructorStatus {
+  position: string;
+  points: string;
+  wins: string;
+  teamName: string;
+}
